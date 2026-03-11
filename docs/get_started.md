@@ -13,14 +13,13 @@ nav_order: 2
 
 ## EE-LCB<small>sr</small> refered to hereafter as LCB is a 
 
-
 EE-LCB functions are designed to map over a collection of images with a single task and be
 chained together to execute a processing plan. This architecture provides maximum flexiblity, simplicty and readibiltiy. The resulting collection can be used in time se
 
 Load the module:
 
 ```
-var lcb = require('users/jstnbraaten/modules:ee-lcb.js');` 
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
 ```
 
 1. Find the functions and put them together in a plan
@@ -30,9 +29,6 @@ var lcb = require('users/jstnbraaten/modules:ee-lcb.js');`
 5. Map functions over the collection
 
 A typical workflow would include
-
-
-
 
 EE-LCB functions are organized into groups that perform related tasks, they include
 
@@ -46,12 +42,6 @@ EE-LCB functions are organized into groups that perform related tasks, they incl
 - Visualization
 - *There are also example datasets
 
-
-
-
-
-
-
 ## One variable to rule them all
 
 Functions in this module take a single `ee.Image` or `ee.ImageCollection` as an argument. Other inputs that may be needed are provided by property values set in the `props` global dictionary, which is exposed to all functions. For instance, the cloud masking function `sr.maskCFmask()` takes a single ee.Image as an argument, however, the function also wants to know what image features (cloud, shadow, water, snow) you want to mask from the image. To specify these features, the `props.cfmask` property is given a feature `list` like this:
@@ -61,28 +51,23 @@ lcb.setProps({cfmask: ['cloud', 'shadow']})
 
 ```
 
-
-
-
-
-
-
-
 ## Band Naming Convention
 
 The Landsat surface reflectance product is available for Landsat 5, 7, and 8 data. Landsat 5 and 7 have the same band configurations, but Landsat 8 is different. All images will be standardized to include only reflectance and CFmask *pixel_qa* bands and band names which match the *LC08* convention. In all other cases the original band arrangement and names will remain.   
 
-
 | Band Name        | LT05 (TM)        | LE07 (ETM+)      | LC08 (OLI) |
 | --- | --- | --- | --- |
-| Ultra-blue band  | NA                | NA                | B1 (0.43-0.45 mm) |
-| Blue band        | B1 (0.45-0.52 mm) | B1 (0.45-0.52 mm) | B2 (0.45-0.51) |
+| Ultra-blue band  | NA                | NA                | B1 (0.43-0.45) |
+| Blue band        | B1 (0.45-0.52) | B1 (0.45-0.52) | B2 (0.45-0.51) |
 | Green band       | B2 (0.52-0.60)   | B2 (0.52-0.60)   | B3 (0.53-0.59) |
 | Red band         | B3 (0.63-0.69)   | B3 (0.63-0.69)   | B4 (0.64-0.67) |
 | NIR band         | B4 (0.76-0.90)   | B4 (0.77-0.90)   | B5 (0.85-0.88) |
 | SWIR 1 band      | B5 (1.55-1.75)   | B5 (1.55-1.75)   | B6 (1.57-1.65) |
 | SWIR 2 band      | B7 (2.08-2.35)   | B7 (2.09-2.35)   | B7 (2.11-2.29) |
-| Cirrus band      | NA                | NA                | B8 (1.36-1.38) |
+| Panchromatic     | NA                | B8 (0.52-0.90) | B8 (0.5-0.68) |
+| Cirrus band      | NA                | NA                | B9 (1.36-1.38) |
+
+*Wavelengths in micrometers (µm)*
 
 ## Band Harmonization
 
@@ -116,16 +101,3 @@ https://esajournals.onlinelibrary.wiley.com/doi/pdf/10.1002/ecy.1730
 
 Current status of Landsat program, science, and applications
 https://www.sciencedirect.com/science/article/pii/S0034425719300707
-  
-
-
-
-
-
-
-
-
-
-
-
-
