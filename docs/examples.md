@@ -255,6 +255,9 @@ SOMETHING IS WRONG IF THERE IS A MISSING YEAR IN THE COLLECTION - TRY POINT: aoi
 Example [Try Live](http://example.com/)
 {: .lh-tight .fs-2 }
 ```js
+// load EE-LCB module
+var lcb = require('users/jstnbraaten/modules:ee-lcb.js'); 
+
 // define collection properties
 var colProps = {
   startYear: 1984,
