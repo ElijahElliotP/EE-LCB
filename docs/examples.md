@@ -271,7 +271,7 @@ var colProps = {
 lcb.setProps(colProps);
 
 // make an ee.List sequence from startYear to endYear
-var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var years = ee.List.sequence(colProps.startYear, colProps.endYear);
 
 // map over the list of years - return a list of annual mean NDVI composite images
 var imgList = years.map(function(year){
@@ -339,7 +339,7 @@ var plan = function(year){
 };
 
 // apply the processing plan to the range of years
-var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var years = ee.List.sequence(colProps.startYear, colProps.endYear);
 var nValidCol = ee.ImageCollection.fromImages(years.map(plan));
 
 // subset one year to display
@@ -397,7 +397,7 @@ var plan = function(year){
 };
 
 // apply the processing plan to the range of years
-var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var years = ee.List.sequence(colProps.startYear, colProps.endYear);
 var nValidCol = ee.ImageCollection.fromImages(years.map(plan));
 
 // reduce collection of nValid pixels to mean
@@ -471,7 +471,7 @@ var plan = function(year){
 };
 
 // apply the processing plan to the range of years
-var years = ee.List.sequence(lcb.props.startYear, lcb.props.endYear);
+var years = ee.List.sequence(colProps.startYear, colProps.endYear);
 var nValidSummary = ee.FeatureCollection(years.map(plan));
 
 // show results
